@@ -52,7 +52,8 @@ def main():
 
         elif choice == "12":
             checkNumber()
-
+        elif choice == "13":
+            guessingGame()
         else:
             print("That is not a valid choice. You can only choose from the menu.")
 

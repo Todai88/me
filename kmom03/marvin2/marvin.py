@@ -44,6 +44,7 @@ def menu():
     print("10) Let Ragnar calculate the area of a circle with the radius of your choice.")
     print("11) Let Ragnar calculate the hypotenuse of a triangle with the sides of your choice.")
     print("12) Have Ragnar compare a given number to your previous number.")
+    print("13) Play the guessing game with Ragnar.")
     print("q) Quit.")
 
 
@@ -240,3 +241,40 @@ def checkNumber(prev="first"):
         else:
             compareNumbers(int(prev), int(new))
             checkNumber(str(new))
+
+def guessingGame(number = 0, count = 0, randNumber = 0):
+    """
+    Guessing game.
+    Allows the user 6 guesses to find the right number (1-100)
+    """
+
+    if count == 0:
+        randNumber = randint(1,100)
+        print("====================================================================")
+        print("Welcome to the guessing game! \nIn this game you will enter a guess.")
+        print("If your guess is too low / too high, Ragnar will tell you. You have 6 guesses")
+        print("====================================================================")
+        guessingGame(validateInt(input("What is your first guess?\n")), 1, randNumber)
+    else:
+        if number == randNumber:
+            print("====================================================================")
+            print("You guessed right! The number was: " + str(randNumber))
+            print("It only took you " + str(count) + " guesses")
+            print("====================================================================")
+            ender = input("Good work. Please enter a key to end the game...")
+        elif count == 6:
+            print("====================================================================")
+            print("You've had your 6 guesses.\nYou lost!")
+            print("====================================================================")
+        elif number > randNumber:
+            count += 1
+            print("====================================================================")
+            print("Your guess " + str(number) + " was too high. Try again!")
+            print("====================================================================")
+            guessingGame(validateInt(input("What is your next guess?\n")), count, randNumber)
+        elif number < randNumber:
+            count += 1
+            print("====================================================================")
+            print("Your guess " + str(number) + " was too low. Try again!")
+            print("====================================================================")
+            guessingGame(validateInt(input("What is your next guess?\n")), count, randNumber)
