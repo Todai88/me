@@ -139,38 +139,70 @@ Resultatet är mycket lovande.
 <div class='panel panel-default'>
 <div class='panel-heading'>
 <h4 class='panel-title'>
-<a data-toggle='collapse' data-parent='#redovisnings-grupp' href='#Kmom03'>Kmom03</a>
+<a data-toggle='collapse' data-parent='#redovisnings-grupp' href='#Kmom02'>Kmom02</a>
 </h4>
 </div>
-<div id='Kmom03' class='panel-collapse collapse'>
+<div id='Kmom02' class='panel-collapse collapse'>
 <div class='panel-body'>
 <ul>
 
-<li><b>Har du programmerat med filhantering tidigare, känns det lätt eller svårt?</b></li>
-Jag har jobbat med filhantering i ett par olika språk; java, c#, python, c++ osv.
-I jämförelse med många andra språk så måste jag erkänna att python gör det rätt enkelt.
-En sak som gör det rätt skönt är att du inte behöver bry dig om att stänga filer osv eftersom EOF hanteras automatiskt.
-En annan sak är självklart hur enkelt det är att jobba med strängar.
-<li><b>Vad tycker du om video som läromedel, tycker du att de tillför något som läromedel?</b></li>
-Jag älskar videor som läromedel. Självklart behöver man köra lite programmering också för att verkligen lära sig, men
-utöver det så måste jag erkänna att jag älskar det!
-Jag kollar gärna på videor när jag är på löpbandet på gymmet. :)
+<li><b>Hur känns syntaxen i Python? Är det enkelt att se programmets struktur och vad det gör?</b></li>
+Jo visst känns det bra. Riktigt trötsamt att behöva tänka på indenteringar osv.
+Fick lite osköna felmeddelanden av pylint (nämner dem nedan).
+Överlag känns det väldigt likt hur jag jobbar i .NET, åtminstone hittils.
+<li><b>Hur går det med valideringen av uppgifterna? Är du överens med pylint om eventuella felmeddelanden vid valideringen?</b></li>
+Valideringarna funkar väl. Problemet jag hade denna gången var huvudsakligen att pylint visar felmeddelanden även fast
+kompilatorn kompilerar väl och exekverar gött.
 
-<li><b>Du har gjort din första modul i Python, känns strukturen bra?</b></li>
-Jo, visst gör den det.
-Jag blir riktigt less på importerna, dock. Jag hade gärna velat kunna importera alla funktioner i en fil, men det kan
-man ju inte utifall man har oanvända funktioner i ens importerade fil. I mitt fall hade jag en funktion (validateInt())
-som inte användes av main(), därför gavs jag en varning av pylint...
+Ett par exempel är ju självklart kravet på doctypes i metodkropparna. Ett annat mer konkret exempel var hur det krävdes
+doctype i toppen av filen (marvin1.py), även fast min lokala kompilator funkar väl. Min lokala funkar dock INTE
+då jag har en doctype (kommentar) över importerna och encoding-arna...
 
-<li><b>Vad tyckte du om de olika uppgifterna? Hur tänkte du när du utförde dem? Var de utmanande eller lätta?</b></li>
-De har inte riktigt börjat bli utmanande. Vad har varit utmanande är att varva hård utveckling på dagarna och sedan jobba
-igenom kursen på kvällen.
-Det känns dock som att det är en rätt linjär kurva, vilket säkert är skönt för alla nybörjare! :)
+<li><b>Hur gick det att utföra uppgifterna, var de enkla eller svåra?</b></li>
+Fortfarande inget alltför utmanande. Dock är det rätt skönt att ribban ökas sakta men säkert.
+Jag är dock övertygad om att personer med mindre erfarenhet än mig finner många av
+frågorna betydligt mer utmanande.
+
+Huvudutmaningen för mig är mer att se över syntaxen osv snarare än att bli uppjagad om hur
+man type-castar osv.
 </ul>
 </div>
 	</div>
 	</div>
+    <div class='panel panel-default'>
+    <div class='panel-heading'>
+    <h4 class='panel-title'>
+    <a data-toggle='collapse' data-parent='#redovisnings-grupp' href='#Kmom03'>Kmom03</a>
+    </h4>
+    </div>
+    <div id='Kmom03' class='panel-collapse collapse'>
+    <div class='panel-body'>
+    <ul>
 
+    <li><b>Har du programmerat med filhantering tidigare, känns det lätt eller svårt?</b></li>
+    Jag har jobbat med filhantering i ett par olika språk; java, c#, python, c++ osv.
+    I jämförelse med många andra språk så måste jag erkänna att python gör det rätt enkelt.
+    En sak som gör det rätt skönt är att du inte behöver bry dig om att stänga filer osv eftersom EOF hanteras automatiskt.
+    En annan sak är självklart hur enkelt det är att jobba med strängar.
+    <li><b>Vad tycker du om video som läromedel, tycker du att de tillför något som läromedel?</b></li>
+    Jag älskar videor som läromedel. Självklart behöver man köra lite programmering också för att verkligen lära sig, men
+    utöver det så måste jag erkänna att jag älskar det!
+    Jag kollar gärna på videor när jag är på löpbandet på gymmet. :)
+
+    <li><b>Du har gjort din första modul i Python, känns strukturen bra?</b></li>
+    Jo, visst gör den det.
+    Jag blir riktigt less på importerna, dock. Jag hade gärna velat kunna importera alla funktioner i en fil, men det kan
+    man ju inte utifall man har oanvända funktioner i ens importerade fil. I mitt fall hade jag en funktion (validateInt())
+    som inte användes av main(), därför gavs jag en varning av pylint...
+
+    <li><b>Vad tyckte du om de olika uppgifterna? Hur tänkte du när du utförde dem? Var de utmanande eller lätta?</b></li>
+    De har inte riktigt börjat bli utmanande. Vad har varit utmanande är att varva hård utveckling på dagarna och sedan jobba
+    igenom kursen på kvällen.
+    Det känns dock som att det är en rätt linjär kurva, vilket säkert är skönt för alla nybörjare! :)
+    </ul>
+    </div>
+    	</div>
+    	</div>
 	</div>
 	</div>
 	</body>
