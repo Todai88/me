@@ -1,5 +1,10 @@
+"""
+This is the main python class.
+"""
 #!/usr/bin/env python3
-from marvin import *
+from marvin import menu, myNameIs, yearsToSec, weightOnMoon, minsToHours, celToFahr, multiplyWord, printRandNumber
+from marvin import sumAndAverage, gradeFromPoints, areaFromRadius, calcHypotenuse, checkNumber
+from marvin import guessingGame, printString, shuffleWord
 
 def main():
     """
@@ -36,7 +41,7 @@ def main():
             multiplyWord()
 
         elif choice == "7":
-            randNumber()
+            printRandNumber()
 
         elif choice == "8":
             sumAndAverage()
@@ -54,6 +59,11 @@ def main():
             checkNumber()
         elif choice == "13":
             guessingGame()
+        elif choice == "14":
+            printString()
+        elif choice == "15":
+            shuffleWord()
+
         else:
             print("That is not a valid choice. You can only choose from the menu.")
 

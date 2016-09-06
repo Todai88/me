@@ -1,3 +1,7 @@
+"""
+The main functionality of marvin2
+"""
+
 #!/usr/bin/env python3
 from random import randint
 import math
@@ -45,6 +49,8 @@ def menu():
     print("11) Let Ragnar calculate the hypotenuse of a triangle with the sides of your choice.")
     print("12) Have Ragnar compare a given number to your previous number.")
     print("13) Play the guessing game with Ragnar.")
+    print("14) Let Marvin print his mood.")
+    print("15) Shuffle a word")
     print("q) Quit.")
 
 
@@ -105,7 +111,7 @@ def multiplyWord():
     word *= int(factor)
     print("The word is:\n" + str(word))
 
-def randNumber():
+def printRandNumber():
     """
     Adds 10 random numbers (depending on user range)
     to a string.
@@ -242,14 +248,14 @@ def checkNumber(prev="first"):
             compareNumbers(int(prev), int(new))
             checkNumber(str(new))
 
-def guessingGame(number = 0, count = 0, randNumber = 0):
+def guessingGame(number=0, count=0, randNumber=0):
     """
     Guessing game.
     Allows the user 6 guesses to find the right number (1-100)
     """
 
     if count == 0:
-        randNumber = randint(1,100)
+        randNumber = randint(1, 100)
         print("====================================================================")
         print("Welcome to the guessing game! \nIn this game you will enter a guess.")
         print("If your guess is too low / too high, Ragnar will tell you. You have 6 guesses")
@@ -261,11 +267,12 @@ def guessingGame(number = 0, count = 0, randNumber = 0):
             print("You guessed right! The number was: " + str(randNumber))
             print("It only took you " + str(count) + " guesses")
             print("====================================================================")
-            ender = input("Good work. Please enter a key to end the game...")
+            input("\nPress enter to continue...")
         elif count == 6:
             print("====================================================================")
             print("You've had your 6 guesses.\nYou lost!")
             print("====================================================================")
+            input("\nPress enter to continue...")
         elif number > randNumber:
             count += 1
             print("====================================================================")
@@ -278,3 +285,43 @@ def guessingGame(number = 0, count = 0, randNumber = 0):
             print("Your guess " + str(number) + " was too low. Try again!")
             print("====================================================================")
             guessingGame(validateInt(input("What is your next guess?\n")), count, randNumber)
+
+def printString():
+    """
+    Prints a string read from readme.txt
+    """
+    count = 0
+    date = ""
+    mood = ""
+    number = ""
+    realNumber = ""
+
+    with open('readme.txt', 'r') as f:#
+        for line in f:
+            if count == 0:
+                date += str(line)[:-1]
+            elif count == 1:
+                mood += str(line)[:-1].lower()
+            elif count == 2:
+                number += str(line)[:-1]
+            elif count == 3:
+                realNumber += str(line)[:-1]
+            count += 1
+
+    sentance = "Dear diary today is the {}.\nI've worked {} days straight".format(date, number)
+    sentance += " and my moodpoints are {} which means I am {}...".format(realNumber, mood)
+    print(sentance)
+    input("\nPress enter to continue...")
+
+def shuffleWord():
+    """
+    Shuffles a word of the users chosing
+    """
+
+    #importing random
+    import random
+
+    #function body
+    word = input("Please enter a word to be shuffled!\n")
+    print(''.join(random.sample(word, len(word))))
+    input("\nPress enter to continue...")
