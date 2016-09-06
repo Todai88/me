@@ -356,11 +356,11 @@ Answer with the modified list.
 Write your code below and put the answer into the variable ANSWER.
 """
 myList = ["a", "b", "c", "d", "e"]
-myList[2:3] = ["picture", "canvas"]
+temp = myList[:3] + ["picture"] + ["canvas"] + myList[3:]
 
 
 
-ANSWER = myList
+ANSWER = temp
 
 # I will now test your answer - change false to true to get a hint.
 print(dbwebb.assertEqual("2.8", ANSWER, False))
