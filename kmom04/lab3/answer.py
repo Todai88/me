@@ -382,10 +382,10 @@ Write your code below and put the answer into the variable ANSWER.
 
 
 
+myList = ["a", "b", "c", "d", "e"]
+del myList[0]
 
-
-
-ANSWER = "Replace this text with the variable holding the answer."
+ANSWER = myList
 
 # I will now test your answer - change false to true to get a hint.
 print(dbwebb.assertEqual("2.9", ANSWER, False))
@@ -406,11 +406,11 @@ Write your code below and put the answer into the variable ANSWER.
 """
 
 
+myList = ["a", "b", "c", "d", "e"]
+del myList[1:3]
 
 
-
-
-ANSWER = "Replace this text with the variable holding the answer."
+ANSWER = myList
 
 # I will now test your answer - change false to true to get a hint.
 print(dbwebb.assertEqual("2.10", ANSWER, False))
@@ -433,14 +433,14 @@ Write your code below and put the answer into the variable ANSWER.
 """
 
 
+list1 = ["d", "c", "b", "a", "e"]
+list2 = ["d", "c", "b", "a", "e"]
 
 
-
-
-ANSWER = "Replace this text with the variable holding the answer."
+ANSWER = list1 is list2
 
 # I will now test your answer - change false to true to get a hint.
-print(dbwebb.assertEqual("2.11", ANSWER, False))
+print(dbwebb.assertEqual("2.11", ANSWER, True))
 
 """
 Exercise 2.12
@@ -456,12 +456,12 @@ Answer with the result of 'list1 is list3'.
 Write your code below and put the answer into the variable ANSWER.
 """
 
+list3 = list1
 
 
 
 
-
-ANSWER = "Replace this text with the variable holding the answer."
+ANSWER = list1 is list3
 
 # I will now test your answer - change false to true to get a hint.
 print(dbwebb.assertEqual("2.12", ANSWER, False))
@@ -481,11 +481,11 @@ Write your code below and put the answer into the variable ANSWER.
 """
 
 
+list1[0] = "x"
 
 
 
-
-ANSWER = "Replace this text with the variable holding the answer."
+ANSWER = list3
 
 # I will now test your answer - change false to true to get a hint.
 print(dbwebb.assertEqual("2.13", ANSWER, False))
@@ -517,13 +517,18 @@ Answer with the sorted list.
 
 Write your code below and put the answer into the variable ANSWER.
 """
+def sortAndMultiply():
+    """
+    Return all elements in the list sorted desc
+    and multiplied by 10
+    """
+    returnList = [123, 4, 125, 69, 155]
+    returnList = sorted([x * 10 for x in myList])
+    return returnList
 
 
 
-
-
-
-ANSWER = "Replace this text with the variable holding the answer."
+ANSWER = sortAndMultiply()
 
 # I will now test your answer - change false to true to get a hint.
 print(dbwebb.assertEqual("3.1", ANSWER, False))
@@ -545,13 +550,21 @@ Answer with the modified list sorted in numerical order, descending.
 
 Write your code below and put the answer into the variable ANSWER.
 """
+def multiplyAndAdd():
+    """
+    Return the list [67, 50, 2, 39, 15] sorted ascending and
+    with all even numbers multiplied by 3 and all uneven with 9 added to them
+    """
+    returnList = [67, 50, 2, 39, 15]
+    returnList = sorted([x * 3 if(x % 2 == 0) else x + 9 for x in myList], reverse=True)
+    return returnList
 
 
 
 
 
 
-ANSWER = "Replace this text with the variable holding the answer."
+ANSWER = multiplyAndAdd()
 
 # I will now test your answer - change false to true to get a hint.
 print(dbwebb.assertEqual("3.2", ANSWER, False))
