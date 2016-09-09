@@ -1,7 +1,6 @@
 """
-The main functionality of marvin2
+marvin
 """
-
 #!/usr/bin/env python3
 from random import randint
 import math
@@ -350,6 +349,10 @@ def doWhat(toWork):
     Print from / file depending on argument
     """
     if (toWork[0:4] == "drop"):
+        if (toWork[4:].strip() == ""):
+            print("\nDropping all items!")
+            open('inv.data', 'w').close()
+            print("... done. Items dropped!")
         #open and read all files in inv.data, then close it
         f = open("inv.data", "r")
         lines = f.readlines()
@@ -365,8 +368,11 @@ def doWhat(toWork):
         f.close()
 
     elif (toWork[0:4] == "pick"):
-        with open("inv.data", "a") as f:
-            f.write("> " + toWork[5:]+"\n")
+        if sum(1 for line in open('inv.data', 'r') if line.rstrip()) <= 5:
+            print("\nI already have 5 items. I can't pick anything up until I've dropped something...")
+        else:
+            with open("inv.data", "a") as f:
+                f.write("> " + toWork[5:]+"\n")
 
     elif (toWork.strip() == ""):
         with open("inv.data", "r") as f:

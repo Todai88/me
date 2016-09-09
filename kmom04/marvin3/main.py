@@ -1,7 +1,6 @@
 """
-MAIN FUNCTION
+main
 """
-
 #!/usr/bin/env python3
 from marvin import menu, myNameIs, yearsToSec, weightOnMoon, minsToHours, celToFahr, multiplyWord, printRandNumber
 from marvin import sumAndAverage, gradeFromPoints, areaFromRadius, calcHypotenuse, checkNumber
