@@ -169,40 +169,85 @@ man type-castar osv.
 </div>
 	</div>
 	</div>
-    <div class='panel panel-default'>
-    <div class='panel-heading'>
-    <h4 class='panel-title'>
-    <a data-toggle='collapse' data-parent='#redovisnings-grupp' href='#Kmom03'>Kmom03</a>
-    </h4>
-    </div>
-    <div id='Kmom03' class='panel-collapse collapse'>
-    <div class='panel-body'>
-    <ul>
+    			<div class='panel panel-default'>
+				    <div class='panel-heading'>
+					    <h4 class='panel-title'>
+					    <a data-toggle='collapse' data-parent='#redovisnings-grupp' href='#Kmom03'>Kmom03</a>
+					    </h4>
+				    </div>
+				    <div id='Kmom03' class='panel-collapse collapse'>
+				    	<div class='panel-body'>
+				    			<ul>
 
-    <li><b>Har du programmerat med filhantering tidigare, känns det lätt eller svårt?</b></li>
-    Jag har jobbat med filhantering i ett par olika språk; java, c#, python, c++ osv.
-    I jämförelse med många andra språk så måste jag erkänna att python gör det rätt enkelt.
-    En sak som gör det rätt skönt är att du inte behöver bry dig om att stänga filer osv eftersom EOF hanteras automatiskt.
-    En annan sak är självklart hur enkelt det är att jobba med strängar.
-    <li><b>Vad tycker du om video som läromedel, tycker du att de tillför något som läromedel?</b></li>
-    Jag älskar videor som läromedel. Självklart behöver man köra lite programmering också för att verkligen lära sig, men
-    utöver det så måste jag erkänna att jag älskar det!
-    Jag kollar gärna på videor när jag är på löpbandet på gymmet. :)
+								    <li><b>Har du programmerat med filhantering tidigare, känns det lätt eller svårt?</b></li>
+								    Jag har jobbat med filhantering i ett par olika språk; java, c#, python, c++ osv.
+								    I jämförelse med många andra språk så måste jag erkänna att python gör det rätt enkelt.
+								    En sak som gör det rätt skönt är att du inte behöver bry dig om att stänga filer osv eftersom EOF hanteras automatiskt.
+								    En annan sak är självklart hur enkelt det är att jobba med strängar.
+								    <li><b>Vad tycker du om video som läromedel, tycker du att de tillför något som läromedel?</b></li>
+								    Jag älskar videor som läromedel. Självklart behöver man köra lite programmering också för att verkligen lära sig, men
+								    utöver det så måste jag erkänna att jag älskar det!
+								    Jag kollar gärna på videor när jag är på löpbandet på gymmet. :)
 
-    <li><b>Du har gjort din första modul i Python, känns strukturen bra?</b></li>
-    Jo, visst gör den det.
-    Jag blir riktigt less på importerna, dock. Jag hade gärna velat kunna importera alla funktioner i en fil, men det kan
-    man ju inte utifall man har oanvända funktioner i ens importerade fil. I mitt fall hade jag en funktion (validateInt())
-    som inte användes av main(), därför gavs jag en varning av pylint...
+								    <li><b>Du har gjort din första modul i Python, känns strukturen bra?</b></li>
+								    Jo, visst gör den det.
+								    Jag blir riktigt less på importerna, dock. Jag hade gärna velat kunna importera alla funktioner i en fil, men det kan
+								    man ju inte utifall man har oanvända funktioner i ens importerade fil. I mitt fall hade jag en funktion (validateInt())
+								    som inte användes av main(), därför gavs jag en varning av pylint...
 
-    <li><b>Vad tyckte du om de olika uppgifterna? Hur tänkte du när du utförde dem? Var de utmanande eller lätta?</b></li>
-    De har inte riktigt börjat bli utmanande. Vad har varit utmanande är att varva hård utveckling på dagarna och sedan jobba
-    igenom kursen på kvällen.
-    Det känns dock som att det är en rätt linjär kurva, vilket säkert är skönt för alla nybörjare! :)
-    </ul>
-    </div>
-    	</div>
-    	</div>
+								    <li><b>Vad tyckte du om de olika uppgifterna? Hur tänkte du när du utförde dem? Var de utmanande eller lätta?</b></li>
+								    De har inte riktigt börjat bli utmanande. Vad har varit utmanande är att varva hård utveckling på dagarna och sedan jobba
+								    igenom kursen på kvällen.
+								    Det känns dock som att det är en rätt linjär kurva, vilket säkert är skönt för alla nybörjare! :)
+				    		   </ul>
+			    		</div>
+    				</div>
+    			</div>
+
+    			<div class='panel panel-default'>
+				    <div class='panel-heading'>
+					    <h4 class='panel-title'>
+					    <a data-toggle='collapse' data-parent='#redovisnings-grupp' href='#Kmom04'>Kmom04</a>
+					    </h4>
+				    </div>
+				    <div id='Kmom04' class='panel-collapse collapse'>
+				    	<div class='panel-body'>
+				    			<ul>
+
+								    <li><b>Var det svårt att bekanta sig med datastrukturen för listor eller flöt det på bra?</b></li>
+								    Jag måste erkänna att vissa saker med lists i Python känns lite svårlästa, som hur man 
+								    slicear. Dock så är just de överkomplicerade grejorna vad som gör Python enhetligt i jämförelse 
+								    med andra språk. Ett exempel är hur man gör en slice på samma sätt i strängar som i listor, 
+								    något som säkert gör det lättare för en nybörjare om man väl greppat ett användningsområde.
+								    Jag tycker att slice känns lite väl svårläst mot andra språk (som javascript); array.slice(from, to) mot list[from:to]
+								    eller javascripts splice: array.splice(index, howMany, item1, item2....,itemN, itemN+1).
+
+								    Som nämnt känns det lätt att använda, men kanske lite väl svårt att läsa. Så 8 av 10 toasters för användbarhet,
+								    men 5 av 10 toasters för läshet.
+
+								    <li><b>Har du jobbat med listor, eller arrayer, i andra programmeringsspråk – kan du isåfall jämföra Python listor mot andra programmeringsspråk?</b></li>
+								    Som nämnt så har jag arbetat med arrayer och listor i ett par språk. Jämförelsevis så känns det som att Python har många bra
+								    pre-defined functions för datastrukturer, men som jag nämnde ovan så känns det nästan lite som att man tycker att användningsfallen
+								    är viktigare än den användbarhet (usefulness > usability).
+
+								    <li><b>Hur gick det att utföra uppgifterna, vilken tog mest tid och vilken var mest lärorik när det gäller listor?</b></li>
+								    Rent spontant tyker jag fortfarande att det är lite för lätt för att verkligen ta någon större lärdom från dem.
+								    Visserligen lär jag mig mer om hur syntaxen fungerar, men utöver det så känns det rätt enkelt att lära sig Python.
+
+								    Vad tog längst tid? Tror det var någon uppgift i answers.py som blev lite fel för att jag inte riktigt kunde förstå vad 
+								    som skulle göras eftersom frågan var lite udda formulerad. När väl det stod klart vad som var målbilden så tog det några
+								    sekunder att implementera.
+
+								    En sak jag faktiskt lärt mig var hur pythons lists fungerar, hur de får allokerat minne.
+								    Dvs att en lista med desamma element i sig inte är densamma som en annan lista med samma element eftersom
+								    de har olika minnesallokeringar. 
+								    Alltså:
+								    [1,2,3] och [1,2,3] har samma element i sig, men kan vara olika eftersom de har annorlunda minnesallokeringar.
+								    De har desamma element i sig, men är två helt olika objekt!
+				    		   </ul>
+			    		</div>
+    				</div>
+    			</div>
 	</div>
 	</div>
 	</body>
