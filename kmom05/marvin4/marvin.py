@@ -402,8 +402,15 @@ def analyse():
         choice = choice + ".txt"
     print(choice)
 
-    with open(choice) as readFile:
+    with open(choice) as readFile, open('common-words.txt') as common:
+        common_words = common.readlines()
+        common_words = map(lambda s: s.strip(), common_words)
         words = [word for line in readFile for word in line.split()]
+        
+        for word in words:
+            if word in common_words:
+                print("Removing: " + word)
+                words.remove(word)
         print("There are " + str(len(words)))
         c = Counter(words)
         #for word, count in c.most_common():
@@ -414,4 +421,5 @@ def analyse():
         for word, count in nNumbers:
                 out = out + word + "," + str(count) + "\n"
         print(out + "\n*************************************")
+
     input("\nPress enter to continue...")
