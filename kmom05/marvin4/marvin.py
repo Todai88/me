@@ -1,6 +1,3 @@
-"""
-marvin
-"""
 #!/usr/bin/env python3
 from random import randint
 import math
@@ -51,6 +48,7 @@ def menu():
     print("13) Play the guessing game with Ragnar.")
     print("14) Let Marvin print his mood.")
     print("15) Shuffle a word")
+    print("16) Have Ragnar analyse a text.")
     print("q) Quit.")
 
 
@@ -382,4 +380,38 @@ def doWhat(toWork):
     else:
         print("Incorrect inventory arguments!")
 
+    input("\nPress enter to continue...")
+
+
+def analyse():
+    #import listdir
+    from os import listdir
+    #import counter
+    from collections import Counter
+    files = "*************************************\n"
+    for file in listdir():
+        if file.endswith('.txt'):
+            files = files + file + "\n"
+    choice = input("These are the files: \n" + files + "*************************************\nWhat file would you like to analyse?\n")
+
+    if choice.strip() == "":
+        choice = "alice-ch1.txt"
+    elif choice.endswith(".txt"):
+        print(choice)
+    else:
+        choice = choice + ".txt"
+    print(choice)
+
+    with open(choice) as readFile:
+        words = [word for line in readFile for word in line.split()]
+        print("There are " + str(len(words)))
+        c = Counter(words)
+        #for word, count in c.most_common():
+        #    print (word, count)
+        nNumbers = list(c.most_common(7))
+        out = ""
+        print("*************************************\nThese are the 7 most common:")
+        for word, count in nNumbers:
+                out = out + word + "," + str(count) + "\n"
+        print(out + "\n*************************************")
     input("\nPress enter to continue...")
