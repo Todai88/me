@@ -1,3 +1,7 @@
+"""
+marvin
+"""
+
 #!/usr/bin/env python3
 from random import randint
 import math
@@ -384,23 +388,28 @@ def doWhat(toWork):
 
 
 def analyse():
+    """
+    Analyses a file of the user's choice
+    """
     #import listdir
-    from os import listdir
+    from os import listdir, path
     #import counter
     from collections import Counter
     files = "*************************************\n"
     for file in listdir():
         if file.endswith('.txt'):
             files = files + file + "\n"
-    choice = input("These are the files: \n" + files + "*************************************\nWhat file would you like to analyse?\n")
+    print("These are the files in your directory: \n" + files)
+    choice = input("*************************************\nWhat file would you like to analyse?\n")
 
-    if choice.strip() == "":
+    if choice.strip() == "" or not path.exists(choice):
+        print("No file with that name exists.\nDefaulting to alice-ch1.txt")
         choice = "alice-ch1.txt"
-    elif choice.endswith(".txt"):
-        print(choice)
-    else:
+    elif not choice.endswith(".txt"):
+        print("Adding suffix .txt")
         choice = choice + ".txt"
-    print(choice)
+    else:
+        print("Using " + choice)
 
     with open(choice) as readFile, open('common-words.txt') as common, open('words.txt') as correct:
         correct_words = correct.readlines()
@@ -409,18 +418,25 @@ def analyse():
         correct_words = list(map(lambda s: s.strip(), correct_words))
 
         words = [word for line in readFile for word in line.split()]
-        for word in list(words):
-            if word in common_words or not word in correct_words:
-                words.remove(word)
-        print("There are " + str(len(words)))
-        c = Counter(words)
-        #for word, count in c.most_common():
-        #    print (word, count)
-        nNumbers = list(c.most_common(7))
-        out = ""
-        print("*************************************\nThese are the 7 most common:")
-        for word, count in nNumbers:
-                out = out + word + "," + str(count) + "\n"
-        print(out + "\n*************************************")
+        letters = [letters for letters in ''.join(words)]
 
+        c = Counter(words)
+        letterc = Counter(letters)
+        counter = 0
+        letterCounter = 0
+        print("*************************************\nThese are the 7 most common words:")
+        for word, count in c.most_common():
+            if not word in common_words and word in correct_words:
+                print(word + ", "  + str(count))
+                counter = counter + 1
+                if counter == 7:
+                    break
+        print("*************************************")
+        print("\n*************************************\nThese are the 7 most common letters:")
+        for letter, count in letterc.most_common():
+            print(letter + ", " + str((count / len(letters) * 100)))
+            letterCounter = letterCounter + 1
+            if letterCounter == 7:
+                break
+        print("*************************************")
     input("\nPress enter to continue...")
