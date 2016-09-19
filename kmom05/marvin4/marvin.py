@@ -1,7 +1,3 @@
-"""
-marvin
-"""
-
 #!/usr/bin/env python3
 from random import randint
 import math
@@ -53,6 +49,7 @@ def menu():
     print("14) Let Marvin print his mood.")
     print("15) Shuffle a word")
     print("16) Have Ragnar analyse a text.")
+    print("17) Let Ragnar decrypt 'encrypted.txt'.")
     print("q) Quit.")
 
 
@@ -439,4 +436,20 @@ def analyse():
             if letterCounter == 7:
                 break
         print("*************************************")
+    input("\nPress enter to continue...")
+
+def findRot(wordOne, wordTwo, index):
+    letterFreq = {"A" : 65, "E" : 69, "I" : 73, "O" : 81, "U" : 85}
+    rot = ord(wordOne) - letterFreq.values()[index]
+    decrypted = [chr(ord(letter) - (rot if (ord(letter) - rot) =< 65 else   )]
+
+def decrypter():
+    """
+    Placeholder
+    """
+    print("A is: " + str(letterFreq.get('A')))
+    print("E is: " + str(letterFreq.get('E')))
+    with open("encrypted.txt", "r") as encrypted:
+        words = [word for line in encrypted for word in line.split()]
+        print(ord(words[0]))
     input("\nPress enter to continue...")
