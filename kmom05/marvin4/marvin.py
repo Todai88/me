@@ -1,7 +1,3 @@
-"""
-marvin
-"""
-
 #!/usr/bin/env python3
 from random import randint
 import math
@@ -53,6 +49,7 @@ def menu():
     print("14) Let Marvin print his mood.")
     print("15) Shuffle a word")
     print("16) Have Ragnar analyse a text.")
+    print("17) Decrypt a file")
     print("q) Quit.")
 
 
@@ -440,3 +437,66 @@ def analyse():
                 break
         print("*************************************")
     input("\nPress enter to continue...")
+
+LETTER_FREQ = "ETAOINSHRDLCUMWFGYPBVKJXQZ"
+
+with open('words.txt', 'r') as f:
+    WORDS = [word.upper().strip() for word in f.readlines()]
+
+with open('common-words.txt', 'r') as cf:
+    CWORDS = [word.upper().strip() for word in cf.readlines()]
+
+def find_rotation(word1, word2):
+    rot = 0
+    if word1.endswith("."):
+        word1 = word1[:-1]
+    if word2.endswith("."):
+        word2 = word2[:-1]
+    """
+    HIGH PRIO
+    """
+    for index in range(0, len(LETTER_FREQ)):
+        rot = (ord(word1[0]) - ord(LETTER_FREQ[index]))
+        dec_word1 = ''.join([chr((ord(letter) - rot - 65) % 26 + 65) if (ord(letter)) >= 65 and (ord(letter)) <= 90 else letter for letter in word1])
+        if dec_word1 in CWORDS:
+            dec_word2 = ''.join([chr((ord(letter) - rot - 65) % 26 + 65) if (ord(letter)) >= 65 and (ord(letter)) <= 90 else letter for letter in word2])
+            if dec_word2 in WORDS:
+                return rot
+    """
+    LOW PRIO
+    """
+    for index in range(0, len(LETTER_FREQ)):
+        rot = (ord(word1[0]) - ord(LETTER_FREQ[index]))
+        dec_word1 = ''.join([chr((ord(letter) - rot - 65) % 26 + 65) if (ord(letter)) >= 65 and (ord(letter)) <= 90 else letter for letter in word1])
+        if dec_word1 in WORDS:
+            dec_word2 = ''.join([chr((ord(letter) - rot - 65) % 26 + 65) if (ord(letter)) >= 65 and (ord(letter)) <= 90 else letter for letter in word2])
+            if dec_word2 in WORDS:
+                return rot
+
+    return None
+
+def decrypt():
+    with open('encrypted.txt', 'r') as encrypted:
+        decrypted = [] 
+        for line in encrypted:
+            line = line.split(" ")
+            print(line)
+            rot = find_rotation(line[0], line[1])
+            for word in line:
+                decrypted_word = []
+                for letter in word:
+                    #print(letter + ", " + str(ord(letter)))
+                    if (ord(letter) > 90 or 65 > ord(letter)):
+                        print(letter + ", " + str(ord(letter)) + " - becomes " + letter)
+                        letter = letter
+                    elif ((ord(letter) - rot) >= 65 and (ord(letter) - rot) <= 90):
+                        print(letter + ", " + str(ord(letter)) + " - becomes " + chr(ord(letter) - rot))
+                        letter = chr(ord(letter) - rot)
+                    else:
+                        print(letter + ", " + str(ord(letter)) + " - becomes " + chr((ord(letter) - rot - 65) % 26 + 65))
+                        letter = chr((ord(letter) - rot - 65) % 26 + 65)
+                    decrypted_word.insert(len(decrypted_word), letter)
+                decrypted.insert(len(decrypted), ''.join(decrypted_word))
+        decrypted = ' '.join(decrypted)
+        print(decrypted)
+        input("\nPress enter to continue...")
