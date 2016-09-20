@@ -49,7 +49,11 @@ def menu():
     print("14) Let Marvin print his mood.")
     print("15) Shuffle a word")
     print("16) Have Ragnar analyse a text.")
+<<<<<<< HEAD
     print("17) Decrypt a file")
+=======
+    print("17) Let Ragnar decrypt 'encrypted.txt'.")
+>>>>>>> 72d5824ee8d171013704907a3af0f3915a59fd2f
     print("q) Quit.")
 
 
@@ -438,6 +442,7 @@ def analyse():
         print("*************************************")
     input("\nPress enter to continue...")
 
+<<<<<<< HEAD
 LETTER_FREQ = "ETAOINSHRDLCUMWFGYPBVKJXQZ"
 
 with open('words.txt', 'r') as f:
@@ -500,3 +505,20 @@ def decrypt():
         decrypted = ' '.join(decrypted)
         print(decrypted)
         input("\nPress enter to continue...")
+=======
+def findRot(wordOne, wordTwo, index):
+    letterFreq = {"A" : 65, "E" : 69, "I" : 73, "O" : 81, "U" : 85}
+    rot = ord(wordOne) - letterFreq.values()[index]
+    decrypted = [chr(ord(letter) - (rot if (ord(letter) - rot) =< 65 else   )]
+
+def decrypter():
+    """
+    Placeholder
+    """
+    print("A is: " + str(letterFreq.get('A')))
+    print("E is: " + str(letterFreq.get('E')))
+    with open("encrypted.txt", "r") as encrypted:
+        words = [word for line in encrypted for word in line.split()]
+        print(ord(words[0]))
+    input("\nPress enter to continue...")
+>>>>>>> 72d5824ee8d171013704907a3af0f3915a59fd2f

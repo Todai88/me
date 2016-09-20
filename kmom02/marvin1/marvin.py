@@ -1,9 +1,7 @@
 """
-Ragnar with a simple menu to start up with.
-Ragnar doesnt do anything, just presents a menu with some choices.
-You should add functinoality to Ragnar.
-
+Marvin
 """
+
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 from random import randint
@@ -37,17 +35,17 @@ def menu():
     Display the menu with the options that Marvin can do.
     """
     print(chr(27) + "[2J" + chr(27) + "[;H")
-    print(meImage()) 
+    print(meImage())
     print("Welcome.\nMy name is Ragnar.\nWhat can I do for you?\n")
     print("1) Present yourself to Ragnar.")
-    print("2) Have Ragnar calculate your minimum age (in seconds).") 
+    print("2) Have Ragnar calculate your minimum age (in seconds).")
     print("3) Have Ragnar calculate weight on the moon.")
     print("4) Try Ragnar's abilities by having him calculate minutes to hour(s).")
     print("5) Have Ragnar calculate Fahrenheit from Celcius.")
     print("6) See if Ragnar can multiply a word of your liking by a factor of your choice.")
-    print("7) Have Ragnar print 10 numbers within a range of your choice.") 
-    print("8) Keep entering numbers and have Ragnar print their sum and average.") 
-    print("9) Let Ragnar calculate your grade by entering your score!.") 
+    print("7) Have Ragnar print 10 numbers within a range of your choice.")
+    print("8) Keep entering numbers and have Ragnar print their sum and average.")
+    print("9) Let Ragnar calculate your grade by entering your score!.")
     print("10) Let Ragnar calculate the area of a circle with the radius of your choice.")
     print("11) Let Ragnar calculate the hypotenuse of a triangle with the sides of your choice.")
     print("12) Have Ragnar compare a given number to your previous number.")
@@ -121,17 +119,17 @@ def randNumber():
     rangeMax = input("What is the higher number in your range?\n")
     sequence = ""
     for num in range(0, 10):
-        sequence += str(randint(int(rangeMin), int(rangeMax))) + ", " 
+        sequence += str(randint(int(rangeMin), int(rangeMax))) + ", "
         num = num
     print("The random sequence is:\n" + sequence[:-2])
 
-def sumAndAverage(): 
+def sumAndAverage():
     """
     Adds numbers to the sum and calculate the average value of the input(s)
     """
 
     summa = 0
-    count = 0 
+    count = 0
     temp = input("Please enter a number to be added to the sum. \nEnter 'q' if you wish to finish!\n")
     while True:
         if temp == "q":
@@ -150,21 +148,20 @@ def gradeFromPoints():
     """
     Shows the user's grade based on his / her points
     """
-
+    maxPoints = input("What is the max score?\n")
     points = input("How many points did you score?\n")
-    if(float(points) >= 1 and float(points) <= 100):
-        points = float(points) / 100
 
-    if float(points) >= 0.9:
+    print("Your score: " + str(points) + "\nScore: {0}".format(float(maxPoints) * 0.5))
+    if float(points) >= float(maxPoints) * 0.9:
         print("You got an A!")
 
-    elif float(points) >= 0.8 and float(points) < 0.9:
+    elif float(points) >= float(maxPoints) * 0.8 and float(points) < float(maxPoints) * 0.9:
         print("You got a B!")
 
-    elif float(points) >= 0.7 and float(points) < 0.8:
+    elif float(points) >= float(maxPoints) * 0.7 and float(points) < float(maxPoints) * 0.8:
         print("You got a C!")
 
-    elif float(points) >= 0.6 and float(points) < 0.7:
+    elif float(points) >= float(maxPoints) * 0.6 and float(points) < float(maxPoints) * 0.7:
         print("You got a D!")
 
     else:
@@ -244,7 +241,7 @@ def checkNumber(prev="first"):
         if new == 'q':
             print("You have exited the loop!\n")
             return
-        else:    
+        else:
             compareNumbers(int(prev), int(new))
             checkNumber(str(new))
 
@@ -253,8 +250,8 @@ def checkNumber(prev="first"):
 def main():
     """
     This is the main method, I call it main by convention.
-    Its an eternal loop, until q is pressed. 
-    It should check the choice done by the user and call a appropriate 
+    Its an eternal loop, until q is pressed.
+    It should check the choice done by the user and call a appropriate
     function.
     """
 
@@ -265,10 +262,10 @@ def main():
         if choice == "q":
             print("Bye, bye - and welcome back anytime!")
             return
-        
+
         elif choice == "1":
             myNameIs()
-        
+
         elif choice == "2":
             yearsToSec()
 
@@ -277,7 +274,7 @@ def main():
 
         elif choice == "4":
             minsToHours()
-        
+
         elif choice == "5":
             celToFahr()
 
@@ -303,8 +300,8 @@ def main():
             checkNumber()
 
         else:
-            print("That is not a valid choice. You can only choose from the menu.")          
-            
+            print("That is not a valid choice. You can only choose from the menu.")
+
         input("\nPress enter to continue...")
 
 

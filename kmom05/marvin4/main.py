@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 from marvin import menu, myNameIs, yearsToSec, weightOnMoon, minsToHours, celToFahr, multiplyWord, printRandNumber
 from marvin import sumAndAverage, gradeFromPoints, areaFromRadius, calcHypotenuse, checkNumber
+<<<<<<< HEAD
 from marvin import guessingGame, printString, shuffleWord, getQuote, doWhat, analyse, decrypt
+=======
+from marvin import guessingGame, printString, shuffleWord, getQuote, doWhat, analyse
+from marvin import decrypter
+>>>>>>> 72d5824ee8d171013704907a3af0f3915a59fd2f
 
 def isQuote(toCheck):
     """
@@ -89,7 +94,12 @@ def main():
         elif choice == "16":
             analyse()
         elif choice == "17":
+<<<<<<< HEAD
             decrypt()
+=======
+            decrypter()
+
+>>>>>>> 72d5824ee8d171013704907a3af0f3915a59fd2f
         else:
             print("That is not a valid choice. You can only choose from the menu.")
 
