@@ -1,11 +1,21 @@
 """
-marvin
+MARVIN
 """
 
 #!/usr/bin/env python3
 from random import randint
 import math
 
+
+
+def cls():
+    """
+    Defines cls
+    which clears lines.
+    """
+
+    import os
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def meImage():
     """
@@ -53,7 +63,8 @@ def menu():
     print("14) Let Marvin print his mood.")
     print("15) Shuffle a word")
     print("16) Have Ragnar analyse a text.")
-    print("17) Decrypt a file")
+    print("17) Play tictactoe")
+    print("18) Decrypt a file")
     print("q) Quit.")
 
 
@@ -471,7 +482,7 @@ def find_rotation(word1, word2):
         if dec_word1 in CWORDS:
             dec_word2 = ''.join([chr((ord(letter) - rot - 65) % 26 + 65) if (ord(letter)) >= 65 \
                                 and (ord(letter)) <= 90 else letter for letter in word2])
-                                
+
             if dec_word2 in WORDS:
                 return rot
     """
@@ -521,3 +532,130 @@ def decrypt():
         decrypted = ' '.join(decrypted)
         print(decrypted)
         input("\nPress enter to continue...")
+
+def calc_victory(bo, le):
+
+    """
+    Uses some of the logic found here: https://inventwithpython.com/chapter10.html
+    to calculate the win-conditions.
+    """
+
+
+    return ((bo[0][0] == le and bo[0][1] == le and bo[0][2] == le) or # across the top
+            (bo[1][0] == le and bo[1][1] == le and bo[1][2] == le) or # across the middle
+            (bo[2][0] == le and bo[2][1] == le and bo[2][2] == le) or # across the bottom
+            (bo[0][0] == le and bo[1][0] == le and bo[2][0] == le) or # down the left side
+            (bo[0][1] == le and bo[1][1] == le and bo[2][1] == le) or # down the middle
+            (bo[0][2] == le and bo[1][2] == le and bo[2][2] == le) or # down the right side
+            (bo[0][0] == le and bo[1][1] == le and bo[2][2] == le) or # diagonal
+            (bo[2][0] == le and bo[1][1] == le and bo[0][2] == le))
+
+def validate_input(choice):
+
+    """
+    Validates the input!
+    """
+
+    flag = False
+    while (flag == False):
+        try:
+            if choice.upper() == 'SAVE':
+                return choice
+            choice = choice.split(",")
+            a = int(choice[0])
+            a = a - 1
+            b = int(choice[1])
+            b = b - 1
+            if(a > 2 or 0 > a or b > 2 or 0 > b):
+                flag = False
+                choice = input("The move needs to be between 1-3 and formatted like this: '1,2'\n")
+            else:
+                choice = [a, b]
+                flag = True
+        except (ValueError, IndexError, AttributeError):
+            print("Incorrect input!\nPlease try again!")
+            choice = input("Try again!\n")
+    return choice
+
+def tictactoe():
+    """
+    Play the tictactoe game
+    """
+
+    #
+    #
+    #   Setting up the environment
+    #
+    #
+
+    flag = True
+    turn = 1
+    game_list = []
+    choice = input("Load an old save?(Y/N)\n")
+    if choice.upper() == "Y":
+        f = open('tictactoe.txt', 'r')
+        for line in f.readlines():
+            line = line.strip()
+            one_list = []
+            for item in line:
+                one_list.insert(len(one_list), item)
+            game_list.insert(len(game_list), one_list)
+    else:
+        game_list = [["_", "_", "_"], ["_", "_", "_"], ["_", "_", "_"]]
+    print("I've finished setting up the game for us. First to score three in a row wins.")
+
+    #
+    #
+    #   Playing the game
+    #
+    #
+
+    while(flag):
+        if turn != 1:
+            cls()
+        print("\n\n")
+        print("|{}|{}|{}|".format(game_list[0][0], game_list[0][1], game_list[0][2]))
+        print("|{}|{}|{}|".format(game_list[1][0], game_list[1][1], game_list[1][2]))
+        print("|{}|{}|{}|".format(game_list[2][0], game_list[2][1], game_list[2][2]))
+        print("\n\n")
+        print("# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #\n")
+        print("Remember: At any given moment write 'Save' and I'll save our game!")
+        print("\n# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #")
+
+        #
+        #
+        #   GAME LOGIC
+        #
+        #
+
+        if turn == 9:
+            print("There are no more turns! It's a draw.")
+            flag = False
+        elif (calc_victory(game_list, "x")):
+            print("You won")
+            flag = False
+        elif (calc_victory(game_list, "o")):
+            print("I won")
+            flag = False
+        elif turn % 2 == 0:
+            choice = input("Where would I want to go?\n")
+        else:
+            choice = input("Where do you want to play?\n")
+        if flag:
+            choice = validate_input(choice)
+
+
+        if "SAVE" in choice:
+            f = open('tictactoe.txt', 'w')
+            for item in game_list:
+                for element in item:
+                    f.write(str(element))
+                f.write("\n")
+            f.close()
+            break
+        elif game_list[choice[0]][choice[1]] == "_":
+            game_list[choice[0]][choice[1]] = "o" if turn % 2 == 0 else "x"
+            turn += 1
+        #iterate through the read lines and print all back to the file, but the dropped
+
+    input("\nPress enter to continue...")
