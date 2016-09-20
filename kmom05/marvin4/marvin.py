@@ -482,7 +482,7 @@ def find_rotation(word1, word2):
 
 def decrypt():
     with open('encrypted.txt', 'r') as encrypted:
-        decrypted = [] 
+        decrypted = []
         for line in encrypted:
             line = line.split(" ")
             print(line)
@@ -505,20 +505,3 @@ def decrypt():
         decrypted = ' '.join(decrypted)
         print(decrypted)
         input("\nPress enter to continue...")
-=======
-def findRot(wordOne, wordTwo, index):
-    letterFreq = {"A" : 65, "E" : 69, "I" : 73, "O" : 81, "U" : 85}
-    rot = ord(wordOne) - letterFreq.values()[index]
-    decrypted = [chr(ord(letter) - (rot if (ord(letter) - rot) =< 65 else   )]
-
-def decrypter():
-    """
-    Placeholder
-    """
-    print("A is: " + str(letterFreq.get('A')))
-    print("E is: " + str(letterFreq.get('E')))
-    with open("encrypted.txt", "r") as encrypted:
-        words = [word for line in encrypted for word in line.split()]
-        print(ord(words[0]))
-    input("\nPress enter to continue...")
->>>>>>> 72d5824ee8d171013704907a3af0f3915a59fd2f

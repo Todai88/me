@@ -94,12 +94,7 @@ def main():
         elif choice == "16":
             analyse()
         elif choice == "17":
-<<<<<<< HEAD
             decrypt()
-=======
-            decrypter()
-
->>>>>>> 72d5824ee8d171013704907a3af0f3915a59fd2f
         else:
             print("That is not a valid choice. You can only choose from the menu.")
 
