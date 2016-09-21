@@ -1,5 +1,5 @@
 """
-MARVIN
+MARVIN / RAGNAR
 """
 
 #!/usr/bin/env python3
@@ -577,10 +577,30 @@ def validate_input(choice):
             choice = input("Try again!\n")
     return choice
 
+def ai_move(board):
+    """
+    Calculates the AI's move based on a set of preferred moves.
+    If none of the preferred moves are available it uses a random move.
+    """
+    PREFFERED_MOVES = [[2, 2], [1, 1], [1, 3], [3, 1], [3, 3]]
+    #Checking if priority move is possible
+    for move in PREFFERED_MOVES:
+        if board[move[0] - 1][move[1] - 1] == "_":
+            return move
+    #Finding a random move.
+    flag = True
+    while(flag):
+        low_move = [randint(1, 3), randint(1, 3)]
+        if board[low_move[0]][low_move[1]] == "_":
+            return low_move
+    return None
+
 def tictactoe():
     """
     Play the tictactoe game
     """
+    from time import sleep # importing sleep to use
+
 
     #
     #
@@ -638,7 +658,10 @@ def tictactoe():
             print("I won")
             flag = False
         elif turn % 2 == 0:
-            choice = input("Where would I want to go?\n")
+            print("Calculating my move...")
+            sleep(1) # using sleep to simulate thinking
+            move = ai_move(game_list)
+            choice = "{}, {}".format(move[0], move[1])
         else:
             choice = input("Where do you want to play?\n")
         if flag:
@@ -656,6 +679,5 @@ def tictactoe():
         elif game_list[choice[0]][choice[1]] == "_":
             game_list[choice[0]][choice[1]] = "o" if turn % 2 == 0 else "x"
             turn += 1
-        #iterate through the read lines and print all back to the file, but the dropped
 
     input("\nPress enter to continue...")
