@@ -368,7 +368,7 @@ def doWhat(toWork):
         f.close()
 
     elif (toWork[0:4] == "pick"):
-        if sum(1 for line in open('inv.data', 'r') if line.rstrip()) <= 5:
+        if sum(1 for line in open('inv.data', 'r') if line.rstrip()) >= 5:
             print("\nI already have 5 items. I can't pick anything up until I've dropped something...")
         else:
             with open("inv.data", "a") as f:

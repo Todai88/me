@@ -436,17 +436,38 @@ def analyse():
         letterc = Counter(letters)
         counter = 0
         letterCounter = 0
+        print("*************************************\nThere are " + str(len(words)) + " words in the text.")
         print("*************************************\nThese are the 7 most common words:")
         for word, count in c.most_common():
-            if not word in common_words and word in correct_words:
+            print(word + " ," + str(count))
+            counter = counter + 1
+            if counter == 7:
+                counter = 0
+                break
+        print("*************************************")
+
+        print("\n*************************************\nThese are the 7 most common words from common_words.txt:")
+        for word, count in c.most_common():
+            if not word in common_words:
+                print(word + ", "  + str(count))
+                counter = counter + 1
+                if counter == 7:
+                    counter = 0
+                    break
+        print("*************************************")
+
+        print("\n*************************************\nThese are the 7 most common of the correctly spelled words:")
+        for word, count in c.most_common():
+            if word in correct_words:
                 print(word + ", "  + str(count))
                 counter = counter + 1
                 if counter == 7:
                     break
         print("*************************************")
+
         print("\n*************************************\nThese are the 7 most common letters:")
         for letter, count in letterc.most_common():
-            print(letter + ", " + str((count / len(letters) * 100)))
+            print(letter + ", " + str(round((count / len(letters) * 100), 2))+ "%")
             letterCounter = letterCounter + 1
             if letterCounter == 7:
                 break

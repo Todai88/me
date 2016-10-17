@@ -1,5 +1,5 @@
 """
-MAIN FOR RAGNAR / MARVIN
+main
 """
 
 #!/usr/bin/env python3

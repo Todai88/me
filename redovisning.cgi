@@ -248,6 +248,99 @@ man type-castar osv.
 			    		</div>
     				</div>
     			</div>
+    			<div class='panel panel-default'>
+				    <div class='panel-heading'>
+					    <h4 class='panel-title'>
+					    <a data-toggle='collapse' data-parent='#redovisnings-grupp' href='#Kmom05'>Kmom05</a>
+					    </h4>
+				    </div>
+				    <div id='Kmom05' class='panel-collapse collapse'>
+				    	<div class='panel-body'>
+				    			<ul>
+
+								    <li><b>Hur kändes det med datastrukturerna dictionaries och tupler? Har du sett något liknande förut?</b>
+Som vanligt så kändes det bra. Det känns som att en av Pythons starkaste styrkor är att språket verkar använda en relativt normaliserad struktur, något som jag nämnt tidigare. Dictionaries och tupler har jag jobbat med tidigare. Tupler mindre än dictionaries, men nog har jag stött på bägge. När man kör mycket JS så blir det ju en del JSON, vilka egentligen är dictionaries. En av mina nuvarande arbetsuppgifter är att fixa en dynamisk RESTful API för våra .NET datacomponents, så då blir det garanterat JSON. Hellre det än XML...</li>
+
+ <li><b>Känns det som du fick ordning på listor, dictionaries och tupler? När man skall använda respektive och hur de kan användas?</b>
+Som nämnt ovan så känns hela Pythons struktur rätt normaliserad. Det jag menar är självklart att koden ser snarlik ut i alla sorts datastrukturer. Man kan använda snarlika funktioner i en sträng som man kan i en lista exempelvis. Därav blir det lättare att lära sig nya strukturer. Den huvudsakliga skillnaden mellan typerna är att vissa är immutable och andra inte. En mutable typ kan exempelvis addera data till, en immutable kan man inte göra det till. Detta gör listor mer dynamiska än tupler exempelvis, men samtidigt så är tupler lättare att arbeta MED då du kan finna data i dem betydligt lättare. Detta gör tupler i regel snabbare än listor, då de inte behöver itereras på samma sätt utan data enkelt kan finnas genom predefined functions.
+</li>
+ <li><b>Använde du något av listor, dictionaries eller tupler när du gjorde uppgifterna, på vilket sätt? </b>
+Jodå, det användes en stor del listor när jag arbetade mig igenom uppgifterna. Dock användes inte riktigt några tupler eller dictionaries. De flesta (om inte alla) uppgifterna krävde mer dynamiska collections, så därför valde jag att köra huvudsakligen på listor. Sen hade jag självklart memaloc i åtanke och försökte inte använda mig av för stora listor (eftersom de faktiskt är tyngre att iterera över när man letar efter data...). </li>
+
+ <li><b>Hur gick det att utföra uppgifterna, vilken tog mest tid och vilken var mest lärorik? </b>
+Jag tyckte de två extrauppgifterna jag gjorde (decrypt och tictactoe) var de mest lärorika. Som Mikael vet så fastnade jag lite lätt på decrypten, vilket grundade sig i att jag hade missat ett if-fall (om det decrypterade tecknet var > 90). Det var lite mer algoritmiskt tänkande i extrauppgifterna, vilket jag gillade skarpt! Det var mindre att bara läsa en fil och skriva ut tecknen, utan mer att arbeta med data. Om jag var tvungen att välja en av dem skulle jag nog välja dekrypteringen. Tic Tac Toe var kul och lärorik den med, men mindre så än dekrypteringen!
+</li>
+ <li><b>Gjorde du någon av extrauppgifterna? Berätta om det arbetet isåfall.</b>
+Som nämnt ovan så gjorde jag två utav tre extrauppgifter. Skippade den om spelet för att den helt enkelt inte såg alltför kul eller givande ut. Jag gjorde inte heller den tidigare iterationen av spelet, så tänkte att det var lika bra att bara skippa och gå vidare med Kmom06 så att jag fortsätter ligga före kursen då jag faktiskt måste bolla mellan kursen och jobb!
+</li>
+				    		   </ul>
+			    		</div>
+    				</div>
+    			</div>
+
+    			<div class='panel panel-default'>
+				    <div class='panel-heading'>
+					    <h4 class='panel-title'>
+					    <a data-toggle='collapse' data-parent='#redovisnings-grupp' href='#Kmom06'>Kmom06</a>
+					    </h4>
+				    </div>
+				    <div id='Kmom06' class='panel-collapse collapse'>
+				    	<div class='panel-body'>
+				    			<ul>
+
+<li><b>Har du jobbat med liknande tekniker innan (JSON, HTTP, webbtjänster, SQLite, scrapa från HTML-formatet, kommandorads options), eller var detta helt nytt för dig?</b>
+Jodå, det blir en hel del med HTTP-protocoll, JSON-parsing och webtjänster på jobbet (men då huvudsakligen i .NET miljö). Jag håller förnuvarande på att jobba mig igenom en 
+automatiserad webAPI i c# (använder mig av reflection för att hitta moduler i rätt feta datakomponenter). 
+Jag har dock inte jobbat alltför mycket i varken kommandoraden (i python!) eller med scrapande. Det har varit ordentligt givande. Dock har det tagit mig en stund med att 
+lämna in uppgiften då jag har haft så fasansfullt mycket att göra med universiteten (Mikael vet mer om det..). Har i princip spenderat varje dag de senaste två veckorna
+med att bara få koll på hur jag ska gå vidare med min utbildning, vilket gjort mig lite sen.
+
+Det ska nämnas att det är väldigt nytt för mig att jobba med samtliga aspekter som ni frågar om just i python, men som vi redan vet så gör python det relativt lätt att 
+lära sig nya saker då det har så många bibliotek som är färdiga att bara plocka från och ett rätt schysst community online som fortfarande växer (huvudsakligen pga. devops).
+</li>
+
+<li><b>Känns det bra att jobba på kommandoraden, ser du ett användningsområde för den typen av Python-program?</b>
+
+Det känns bra. Det var lite jobbigt i början då jag inte riktigt greppade hur man skulle parsa de olika kommandona (opts, args), så jag jobbade huvudsakligen på opts. 
+Det löste sig rätt snabbt när jag fick lite vägledning och verkligen började läsa lite mer i pythondocs online. Som nämnt ovan känns det riktigt skönt att veta
+att det finns ett stort gäng personer som själva har jobbat med dessa saker och därmed finns det lättillgänglig information på nätet, så man är inte fast särskilt
+länge så länge man är villig att läsa sig fram till ett svar! 
+
+Det finns definitivt användningsområden för kommandorads-program; det flesta som man kör i pen-testing är ju cli-interfaces där man bara exekverar script(s) för att
+göra allt från att scrapa hemsidor för att se om man kanske kan se vad för kod som gömmer sig, eller kollar portscans osv. 
+
+Däremot tror jag många nybörjare kan ha svårt att arbeta med denna slags interface, vilket gör det görbra att vi gör det - då man snabbt introducerar nybörjare
+vid ett lite svårare moment men lätta uppgifter. Detta gör att det kanske inte är rädda att ta för sig vid senare tillfällen! 
+</li>
+
+<li><b>Hur gick det att utföra uppgifterna, vilken tog mest tid och vilken var mest lärorik? </b>
+
+Absolut den bästa uppgiften hittils. Jag var verkligen tvungen att titta mig omkring på nätet / gitter för att faktiskt förstå vad jag höll på med och skulle göra.
+Huvudsakligen var det ju svårt med cli, men när det väl kom på plats så föll det mesta på plats allt eftersom. Det mesta handlade ju egentligen om att förstå
+att även mer avancerade strukturer faktiskt bygger på lättare (JSON-object är ju egentligen dictionaries osv). Det märks att kursens struktur är byggd på ett
+sätt som gör det lättare för absoluta nybörjare att lära sig hur man ska arbeta med data genom att bitvis introducera dem till nya strukturer och mer avancerade
+moment.
+
+Det som tog mest tid var utan tvekan att förstå hur man skulle parsa opts och args. Jag blandade ihopp de bägge och lyckades därmed köra både args och opts
+som opts. Men det löste sig ju - man lever som man lär! :)
+</li>
+
+<li><b>Var uppgiften i tuffaste laget, vilken del hade du valt bort om du hade haft det valet?</b>
+Nej, det tror jag inte. Nu har jag haft lite flyt med att jag faktiskt har haft lite erfarenhet av python sedan tidigare och har jobbat med andra språk rätt ordentligt.
+Men jag kan inte se att en person som faktiskt pluggar språket på heltid skulle ha något större problem med att lösa dessa uppgifter.
+Som nämnt ovan så tycker jag det överlag känns som det varit ett riktigt skönt tempo i kursen, man har stegvis blivit introducerad till mer avancerade moment.
+Att tidigt introducera en användare vid cli kan vara riktigt bra också, då det gör det lättare för en användare att vid senare tillfälle lära sig mer om 
+hur man faktiskt använder ett *nix system.
+
+Om jag var tvungen att ta bort en del skulle det nog vara de lättare delarna av SEO:n. Det kändes mest som att man gjorde samma slags sak som vi gjort i de tidigare momenten med
+att extrahera data från strängar (denna gång lite annorlunda, men inte på en sådan nivå att jag känner det var nödvändigt..). Jag hade istället velat se lite mer
+fokus på hur man kan använda sig av webapi:er, om man ändå har det som tema på momentet. Kanske sätta upp en webAPI som tillåter post-requests via postman eller något liknande (måst finnas). 
+På så vis kan man lära studenterna att man kan skicka data via nätet via Python, vilket jag sannolikt älskat då man kan leka lite med det! :)
+</li>
+				    		   </ul>
+			    		</div>
+    				</div>
+    			</div>
 	</div>
 	</div>
 	</body>
