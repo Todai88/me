@@ -1,0 +1,23 @@
+{
+  "players": [
+    {
+      "name": "beth",
+      "id": 1,
+      "inventory": [],
+      "room": 1,
+      "access": [
+        1,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "name": "bet",
+      "access": [],
+      "id": 2,
+      "room": 1,
+      "inventory": []
+    }
+  ]
+}

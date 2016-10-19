@@ -1,0 +1,27 @@
+{
+
+    "rooms": [
+            {"id" : 1,
+             "description" : "Du står i entrén. Det finns en dörr till ÖST. Framför dörren står Ragnar och väntar på dig.",
+             "puzzle" : "Vad är mitt namn i ROT13 (kolla upp Ceasearshiffer!)\nGissa (skriv gissning) eller backa (skriv 'exit').",
+             "answer" : "ENTANE",
+             "interact" : {"DÖRR(Ö)" : "gå öst"},
+             "east" : 2},
+            {"id" : 2,
+             "description" : "Du står nu i en hall. Det är dörrar på varje sida (N/Ö/S/V). Det finns en brasa i mitten av rummet med en välluktande gryta på.\nFramför norra dörren står Ragnar och ser hungrigt på grytan.",
+             "puzzle" : "'Ger du mig något gott, så kanske jag flyttar på mig...' säger Ragnar\nGe Ragnar något (ge xxxx) eller backa (skriv 'exit').",
+             "answer" : "GRYTA",
+             "interact" : {"GRYTA" : "ta gryta", "DÖRR (N/Ö/S/V)" : "gå riktning (gå n - gå norr)"},
+             "north" : 3,
+             "east" : 4,
+             "south" : 6,
+             "west" : 1},
+             {"id": 3,
+              "description" : "Du står ensam i ett rum. Framför dig på ett bord ligger ett svärd. Det finns ingen dörr utom den du kom ifrån.",
+              "puzzle" : null,
+              "answer" : null,
+              "interact" : {"SVÄRD" : "ta svärd", "DÖRR(S)" : "gå s - gå syd"},
+              "south" : 2
+             }
+              ]
+}
