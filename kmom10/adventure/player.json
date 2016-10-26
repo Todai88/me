@@ -1,23 +1,105 @@
 {
   "players": [
     {
-      "name": "beth",
       "id": 1,
-      "inventory": [],
-      "room": 1,
+      "used": [],
+      "name": "tester",
+      "inventory": [
+        "sv\u00e4rd",
+        "nyckel",
+        "gryta"
+      ],
+      "interacted": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
       "access": [
         1,
         4,
         5,
         6
-      ]
+      ],
+      "solved": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "room": 9
     },
     {
-      "name": "bet",
-      "access": [],
       "id": 2,
-      "room": 1,
-      "inventory": []
+      "used": [
+        "gryta"
+      ],
+      "name": "Joakim",
+      "inventory": [
+        "gryta",
+        "sv\u00e4rd",
+        "nyckel"
+      ],
+      "interacted": [
+        2,
+        3,
+        4,
+        5,
+        5
+      ],
+      "access": [
+        1,
+        4,
+        5,
+        6,
+        2,
+        3
+      ],
+      "solved": [
+        1,
+        2
+      ],
+      "room": 2
+    },
+    {
+      "id": 3,
+      "used": [],
+      "name": "benny",
+      "inventory": [],
+      "interacted": [],
+      "access": [
+        1,
+        4,
+        5,
+        6
+      ],
+      "solved": [],
+      "room": 1
+    },
+    {
+      "id": 4,
+      "used": [],
+      "name": "beth",
+      "inventory": [],
+      "solved": [],
+      "access": [
+        1,
+        4,
+        5,
+        6
+      ],
+      "interacted": [],
+      "room": 1
     }
   ]
 }

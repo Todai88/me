@@ -251,6 +251,7 @@ def ping(URL):
     #
 
     try:
+        latency = str(round((end - start) * 1000, 2))
         conn = sqlite3.connect(db_name)
         cursor = conn.cursor()
         #setting up the create-string

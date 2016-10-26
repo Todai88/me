@@ -341,6 +341,209 @@ På så vis kan man lära studenterna att man kan skicka data via nätet via Pyt
 			    		</div>
     				</div>
     			</div>
+    			    			<div class='panel panel-default'>
+				    <div class='panel-heading'>
+					    <h4 class='panel-title'>
+					    <a data-toggle='collapse' data-parent='#redovisnings-grupp' href='#Kmom10'>Kmom10</a>
+					    </h4>
+				    </div>
+				    <div id='Kmom10' class='panel-collapse collapse'>
+				    	<div class='panel-body'>
+				    		<div class="row">
+				    			<div class="col-xs-6">
+				    			<ul>
+				    			<li> Utförande </li>
+				    			Jag har valt att genomföra moment 1-6 (alltså samtliga moment). Det kändes inte riktigt relevant att bara genomföra de mest grundläggande kraven då jag sedan kursstart har jobbat hårt med att jobba mig igenom alla delmoment (utom cursor-spelet). 
+				    			Även fast jag har fått ett par U:n på inlämningarna så tycker jag ändå att de har genomförts med rätt hög standard, då alla U:n har varit små slarvfel. 
+				    			Självklart så tycker jag att jag borde gjort det bättre, men överlag känns det ändå bra.
+				    				<br>
+				    			Spelet startar med att användaren blir tillfrågad utifall hen vill starta ett nytt spel eller ladda. Om hen vill ladda så får hen ge ett namn på en tidigare save. Detta kollas sedan i players.json och om namnet finns bland json-objekten så laddas denna och spelaren sätts i det rum där hen var senast, med all sin tidigare access, inventory och solved. 
+				    				<br>
+				    			Varje spar-fil har en ett gäng variabler som alla har stor vikt:<br>
+				    			<ul>
+				    			<li><b>room</b> - var spelaren var senast </li>
+				    			<li><b>inventory</b> - ryggsäcken </li>
+				    			<li><b>used</b> - alla använda föremål (ett föremål kan inte slängas förens det använts) </li>
+				    			<li><b>access</b> - vilka rum användaren har tillgång till (default: 1,3,4,5)</li>
+				    			<li><b>solved</b> - vilka rum som är lösta. ett löst rum har en annan description </li>
+				    			<li><b>interacted</b> - vilka rum som har interagerats med, viklet ger en annan description </li>
+				    			</ul>
+				    				<br>
+				    			Varje rum har även de ett gäng viktiga attributer. Men innan jag går in alltför detaljerat på dem så vill jag nämna lite om deras struktur.
+				    			Min tankeställning var att skapa något som är likt ett abstrakt träd (ADT). Där varje träd har ett unikt ID och var deras riktningar (N/Ö/S/V) referar till ett ID. Dvs att alla riktningar från rot N är barn till N och alla dess barn är barnbarn till N. Här är spelkartan:
+				    			<br> <br>   
+				    			________xxxxxxx <br>
+				    			________x33333x <br>
+				    			________x33333x <br>
+				    			xxxxxxxxxx///xxxxxxxxxxxxxx <br>
+				    			x1111111/22222/44444/555x <br>
+				    			xxxxxxxxxx///xxxxxxxxxxxxxx<br>
+				    			________x66666x <br>
+				    			________x66666x <br>
+				    			________xx///xxxxxxxxxx <br>
+				    			________x77777/88888x <br>
+				    			________x77777x88888x  <br>
+				    			________xxxxxxxx///xxxxxxxxxx<br> 
+				    			______________x99999/1010x <br>
+				    			______________x99999x1010x <br>
+				    			______________xxxxxxxxxxxxx <br>
+				    				<br>
+				    			Som ni kan se så har jag även valt att ha 10 olika rum, eftersom jag ville få med lite extra möjligheter för användaren och lite specifika krav, som att man skulle vara tvungen att ta upp särskilda föremål, använda sig av alla spel för att klara sig igenom allt osv. 
+				    				<br>
+				    			Varje rum har alltså: 
+				    			<ul><br>
+ 				    			<li><b>id</b> - deras id. </li>
+ 				    			<li><b>riktning</b> - (N/Ö/S/V) </li>
+ 				    			<li><b>puzzle</b> - ett pussel, om möjligt</li>
+ 				    			<li><b>answer</b> - ett svar på pusslet, om ett finns </li>
+ 				    			<li><b>objekt</b> - ett par objekt. Dessa kan man interagera med och har sina egna attributer beroende på slags objekt</li>
+ 				    			<li><b>alt_description</b> - en beskrivning av rummet om man interagerat med rummets föremål </li>
+ 				    			<li><b>solved_ragnar</b> - en beskrivning av rummet som används om man vunnit spelet mot ragnar </li>
+ 				    			</ul>
+ 				    				<br>
+				    			<b>Krav 1-3</b> har genomförts efter kravspecen. Jag använder mig utav en rätt simpel struktur där vi startar spelet med ./adventure.py <commando> där commando inte är något krav, utan fullkomligt optionellt. 
+				    				<br>
+				    			<b>Krav</b> 4-6 har genomförts efter kravspecen med lite mindre skillnader; ryggsäcken och spel i spelet fungerar som de ska och efter kravspecen (spel i spelen har inte cursor spelet i sig, då jag skippade den extrauppgiften). Dock så ändrade jag lite i 'spara'. Jag kände att det var viktigare för mig att bibehålla en stark data-integrity, dels för att jag inte litar på spelare rent generellt men även för att jag inte riktigt litar på json-biblioteket eller jsonfiler rent generellt. Jag har därmed valt att endast tillåta spelare att ladda från player.json, alltså INTE från en valfri fil. Han kan inte heller spara till en specifik fil. Utöver det så ska det funka helt klockrent.
+				    				<br>
+				    			Dock så är jag lite osäker på utifall jag har haft lite strul med CygWin eller om det är något fel i min kod, men det kan tillkomma problem när man kör vissa kommandon i spelet. Det verkar inte hända ofta, vilket får mig att tro att det kan ha med min miljö att göra. Dvs att jag inte kan återskapa felen, utan att en 'inv' vid ett tillfälle kan lyckas flytta dig till ett annat rum. Något som verkligen inte ska hända.
+				    				<br>
+				    			Utöver det så vet jag om att det finns problem med cygwin och svenska tecken rent generellt. Så om man lyckas skriva in en svensk bokstav vid fel tillfälle så kan spelet tänkas bugga ur fullkomligt. Vilket får spelaren att förlora sitt spel.
+				    			Oturligt, men som sagt har det inte riktigt med min kod att göra, utan är ett problem i cygwin.
+				    				<br>
+				    			Ledtrådar har jag 5 unika av som ges i slumpmässig ordning bestämt av de som inte getts. Om alla ledtrådar har getts så resettas dictionary:n.
+				    				<br>
+				    			Det ska även nämnas att jag använt mig av cls för att rensa skärmen mellan kommandon. Detta för att spelaren lätt ska få information snabbt och förhoppnignsvis på ett lättföreståeligt sätt. 
+				    			Fördelsvis spelar man spelet i fullskärm!
+
+				    			<li> Resonemang </li>
+
+				    			Som nämnt ovan så är integritet något som jag värdesätter i kodande, så tyvärr så valde jag att inte lita på användar-input under genomförandet av sparande. 
+				    			Något som jag kanske borde gjort utifrån krav-specen, men det känns inte riktigt alltför viktigt. Förhoppningsvis så har ni lite överseende med det utifrån mitt resonemang ovan (i utförande). Dock förstår jag om ni väljer att reducera poängen från den deluppgiften.
+				    			<br>
+				    			Jag har även valt att försöka sprida ut mina moduler över ett gäng olika .py-filer. Detta är för att ni lättare ska kunna hålla koll på var ni är och lättare följa data-strömen i programmet. 
+				    			<br>
+				    			Det är även värt att nämna att krypto-spelet inte är särskilt svårt då det inte kräver att användaren löser något. Min tolkning av specen är att man ska kunna få hjälp att dekryptera kryptot enligt 'den hårda vägen'. Därför ser jag inget krav till att tvinga användaren att ha löst alla dekrypteringar själv. Därför ges möjligheten att skriva 'lös' för att låta programmet lösa dekrypteringen själv. 
+				    			Egentligen inte någon större genväg, utan det underlättar bara för spelaren. 
+				    			<br>
+				    			Det är även värt att nämna antalet rum jag har. Jag valde alltså att utöka mängden rum till 10 för att underlätta för mig själv. Huvudsakligen så började jag lägga in fler rum för att jag ville ha mer content. Det kändes för spartanskt utan saker att interagera med i varje rum. Jag ville ju att spelaren skulle kunna använda sig av alla möjliga kommandon i rummen också, men samtidigt så ville jag att de ageringerna skulle ha BESTÅENDE verkan, så det kunde hållas mellan sparningarna. Så det blev helt enkelt till att göra fler rum...
+
+				    			</ul>
+				    			</div>
+				    			<div class="col-xs-6">
+				    			<ul>
+
+<li><b>Beskrivning av moment</b>
+<ul>
+<li><b> Kravmomenten:</b></li>
+<ol>
+<li><b> Getopt. Alternativ. </b></li>
+Det är rätt simpelt. Inget speciellt egentligen. Vad jag valt att göra är att implementera en lösning väldigt lik den i kmom06 där vi använder oss av både opts och args. 
+Till skillnad från kmom06 så används inte args, då vi bara är intresserade av att se över utifall det skickats in något opt.
+Anledningen till att jag valt att implementera en lösning som är snarlik den i kmom06 är för att det minskar på min arbetslast. Ingen riktig förändring har skett, utan det
+är i princip samma lösning. 
+<br>
+Efter att ha fått lite hjälp i gitter så har jag använt _ som variabelnamn istället för args. Jag hoppas alltså att det funkar som det ska. Validering och publicering funkar klockrent.
+<br>
+<li><b> Vad händer? </b> </li>
+Samtliga kommandon från kravspecen har tillämpats enligt samtliga krav. 
+Den enda skillnaden är att jag valt att tillåta riktning istället för fram / bak. Så man skriver alltså "gå (riktning)" för att flytta spelaren mellan rum. 
+Utöver det så sköts navigeringen mellan rum genom att systemet först ser efter utifall man har tillgång (access) till det rummet. Om inte, så måste man genomföra något för att få tillgång.
+Jag har även lagt till så att möjliga kommandon tillåter 'inv', 'inventarier' och 'spara' / 'save' som gör vad man kan förvänta sig att det ska göra.
+<br>
+Övetlag är det rättframt, kravspecen har följts både utifrån vad som ska fungera och hur det fungerar.
+<br>
+Målet med min speldesign har varit att hålla varje rum simpelt, med huvudsakligen maximalt ett föremål man kan interagera med alternativt att man ställs inför ett problem för att gå vidare. Detta för att göra spelupplevelsen så enkel som möjligt, men även ge spelaren en så bestående upplevelse som möjligt. Hade jag haft fler saker att interagera med i ett rum skulle både beskrivning och 'persistance' vara betydligt mer avancerad och tidskrävande. Detta känns som en bra mellan-punkt för att uppnå maximal effekt från bägge perspektiv sett.
+<br>
+<li><b> Interagera med objekt </b></li>
+Som nämnt ovan så har varje rum ett gäng objekt i sig, oftast. Varje objekt har ett flertal attributer som alla spelar roll i hur man kan agera med dem. Anledningen till att 
+jag gett varje objekt attribut istället för att endast ha dem i beskrivningen är för att ge spelaren en klarare vy om hur de kan agera med dem på ett mer DYNAMISKT sätt. 
+Jag vill kunna ta bort / lägga till objekt enkelt utan att behöva ändra en massa funktioner i spelet i sin helhet, varje objekt ska ha ett visst antal attributer för att anses
+vara ett fullkomligt objekt. Dessa är:<br>
+<ul>
+<li>item - föremålets namn</li>
+<li>description - en beskrivning av föremålet </li>
+<li>interact - en beskrivning om hur man kan interagera med föremålet </li>
+<li>open - (fungerar endast på dörrar!). Appenderar en beskrvning på rummet </li>
+<li>moveable - ett boleanskt värde som berättar utifall användaren kan flytta på objektet </li>
+<li>takeable - ett boleanskt värde som berättar utifall spelaren kan ta föremålet </li>
+<li>openable - ett boleanskt värde som berättar utifall spelaren kan öppna föremålet </li>
+<li>kickable - ett boleanskt värde som berättar utifall spelaren kan sparka på föremålet </li>
+<li>kick - en beskrivning om hur det känns att slå på föremålet (om kickable = true) </li>
+<li>open - en beskrivning som skrivs ut ifall spelaren fösöker öppna föremålet. </li>
+</ul>
+<br>
+Som nämnt så tillåter dessa attributer mig att snabbt inkludera nya eller ta bort objekt utan att spelet går sönder. Det är alltså inget som behöver ändras i kod-kroppen för att ett nytt föremål ska fungera, utan föremålet behöver endast ha de ovan nämna attributer för att lätt integeraras.
+<br><br>
+<li><b> Ryggsäcken och inventarier </b></li>
+<br>
+Som jag lite snabbt nämnde i mitt utförande så valde jag alltså att implementera en ryggsäck i spelet. Dock fungerar den lite annorlunda från hur kravspecen ser ut. 
+Man kan ta upp föremål som är "takable". När dessa tas upp så tas de bort från spelvärlden (genom att sätta in rum-id i player["interacted"] och därmed ändra rumsbeskrivningen). Alla takeable föremål är unika och nyckelföremål. Detta innebär att man inte kan släppa ett föremål förän man använt det, detta är en egen restriktion som jag valt att tillsätta för att säkerställa en bekväm spelupplevelse för spelaren. Jag hade även kunnat tillsätta en ny lista / dictionary i spelar-objektet, vilket i sin tur kunde innehålla var föremålet varit släppt för att låta spelaren gå och ta upp det vid ett senare tillfälle. Men utifrån tidsbrist så har jag valt att skippa den implementeringen.
+<br>
+Man kan använda föremålen genom att antingen använda dem i kroppen på rummet, alltså när man bara står i rummet. Om det finns något att använda föremålet på, så visas det på skärmen och ett nytt rum låses upp. Om inte, så händer inget särskilt, utan ett snabbt felmeddelande visas. 
+Det ska även nämnas att använda items läggs i player["used"] för att säkerställa att användaren kan släppa föremål. Denna variabel sparas med spelaren, så om man sparar och laddar kan man fortfarande släppa föremålet.
+<br>
+<br>
+<li><b> Spara eller scrapa </b></li>
+<br>
+Som ni säkert vet vid detta tillfälle så har jag valt att genomföra min lösning med en json-fil. Dvs att ajg skippade scrapande av data. Detta för att jag är relativt bekväm med json, men även för att jag inte riktigt orkar bråka med brandväggar osv, då jag försöker kämpa mig igenom kursen relativt snabbt för att hinna med resterande kurser innan slutet på november.
+<br>
+Som jag även nämnt ovan så har jag på egen hand valt att INTE tillåta spelaren att spara till ny fil, eller ladda från en specifik fil. Detta dels för att underlätta på min arbetsbörda, men huvudsakligen för att jag inte vill ha några problem med data-integritet. Det ska även nämnas att jag helt enkelt inte riktigt litar på json-biblioteket. Det är inte något problem jag har rent specifikt med pythons intergrering, utan ett problem jag har rent generellt med json och att ladda / spara data till formatet. 
+<br>
+Vi ser även fördelen med att ha så många (viktiga) attributer på spelaren i hur jag sparar / laddar iom att detta ger möjlighet till större 'persistance' mellan spelen.
+<br>
+<br>
+<li><b> Spel i spelen </b></li>
+<br>
+Jag nämnde tidigare att jag valt att inte tillämpa cursor-spelet då det var den enda extrauppgiften som jag inte genomfört i kursen.
+De andra två spelen har implementerats genom att använda samma struktur som de hade under tillämpningen av Marvin(Ragnar)-momenten. Med den enda skilladen att
+de bägge spelen är separata moduler som aktiveras när en spelare möter på Ragnar i de rum de är uppsatta i. Anledningen till att jag valt att ge dem egna moduler 
+är för att göra det lättare för er som rättar att kunna finna eventuella fel (även fast jag inte funnit något) i de separata modulerna istället för att felsöka 
+en stor fil.
+<br>
+Som sagt så kräver inte kryptot att man behöver dekryptera något på egen hand, utan man kan använda sig av Ragnar för att lösa allt själv ('den hårda väge'), men man kan självklart försöka själv. 
+Jag har även valt att genomföra kryptot efter de rader som fanns tillgängliga i textfilen för kmom05 istället för att köra någon rotation själv. Jag tyckte det kändes som den rätta saken att göra eftersom varje mening har en annan rotation än den tidigare. Dessutom så är det utifrån den specen som ni bedömde mig (oss) tidigare.
+<br>
+Tic-tac-toe spelet är snarlikt den tidigare implementeringen. Det är alltså inte någon särskilt avancerad AI, utan en rätt simpel sådan. Detta gör det relativt lätt för spelaren att klara av spelet. Dessutom har den med sig sin tidigare validering, så spelaren kan varken avsiktligt eller oavsiktligt förstöra spelet genom att skriva in felaktig input. 
+<br>
+</ol><br>
+<li><b> Projektredovisning </b></li>
+<br>
+Jag måste erkänna att projektet tog betydligt längre tid än vad jag själv uppskattade att det skulle ta. Detta pga flera olika anledningar, dålig tidsuppfattning, men även pga. att vissa delmoment var uppriktigt svåra att implementera.
+Huvudsakligen skulle jag vilja tipsa min forntida jag att använda mig av mer tid för att designa spelet och dess delar innan jag skulle börja implementera dem; ha en god koll på hur spelar-objektet, rums-objekten, föremåls-objekten osv skulle se ut innan jag började implementera kod.
+Dock är jag lite av den gamla skolan och föredrar att jobba emot ett mål genom att genomföra mindre delmoment för att sedan göra ändringar mitt i projektet. Något som i detta fall var lite extra bökigt. Antagligen för att jag fortfarande är relativt ny till Python och dess bibliotek. 
+<br>
+Som sagt tyckte jag det var relativt svårt. Inte överdrivet, men jag kan garanterat se varför vissa studenter med lite mindre erfarenhet skulle kunna tycka att det kändes riktigt svårt. Det var liksom en rätt brant kurva från kmom06-kmom10; från att vara guidad genom delmomenten så gavs man helt plötsligt rätt mycket frihet. Jag älskade det själv, även fast det var lite svårt, men jag kan se hur det kan vara betydligt jobbigare för någon som inte har ett gäng års erfarenhet av programering under bältet.
+<br>
+Jag skulle väl uppskattningsvis vilja säga att jag lagt ner omkring 25 timmar på projektet, ge eller ta 5 timmar. Hade jag kunnat göra om det skulle jag tillämpat åtminstone ett timmar bara för att göra en ordentlig ritning av systemet. Sen börjat prototypa från den specen. Dvs tillämpa en slags HCI-approach, men med fokus på mjukvaran, inte på interaktionsdesignen: 1. gather requirements, 2. design alternatives, 3. prototype, 4. evaluate.
+<br>
+Överlag tycker jag det var ett riktigt bra projekt och jag gillade skarpt att man fick ta tag i projektet lite som man ville. Men som jag nämnde ovan tror jag att kurvan kan ha varit lite för brant för vissa personer. Jag har inte riktigt varit alltför aktiv på gitter den senaste veckan, men jag kan itne tänka mig annat än att ni lär ha fått rätt många frågor om hur man ska gå tillväga för att tillämpa vissa strukturer och rent generllt kring flow-control osv. 
+<br>
+Rent konkret vad som var svårt är dock lite jobbigt att gå in på... Rent generellt så var det strukturen som jag själv tillämpade i början när jag inte var på rätfot om hur objekten skulle se ut och vad som skulle finnas i dem. En fråga jag ställde mig själv i mitten av projektet var varför jag inte har en lokal version av rooms.json i varje spelare för att se till att persistance finns kvar, detta löste jag dock lite mer fint genom att tillämpa de olika attributerna för spelaren. 
+<br>
+Vad som var lätt är väl egentligen allt, när man väl börjar koda. Det handlar inte om någon särskilt komplicerad kod eller struktur. Det gäller egentligen bara om att komma till en sådan del i projektet att man börjar få rätsak på saker och ting. Innan dess var det bara att bråka med strukturen av saker och ting. Kodandet självt har varit relativt enkelt. 
+<br>
+Jag vill avsluta med att nämna att jag lärt mig en hel del utifrån bara projektet sett. Tack för det! :)
+<br><br>
+<li><b> Avslutningsvis </b></li>
+<br>
+Jag tycker ni har gett en riktigt bra kurs som täckt all den mest grundläggande men även till viss del avancerade delarna av Python. En riktigt bra kurs som lärt mig en hel del av språkets specifika nischer. Jag trodde inte heller att jag skulle bli så utmanad av projektet som jag faktiskt blev i slutändan. Något som jag verkligen uppskattar.
+<br>
+Angående kursmaterialet så kan jag dock inte uttrycka mig alltför mycket. Jag har huvudsakligen använt mig av SO, Google och Gitter om jag verkligen behövt hjälp med något konkret.
+Jag gillar exemplen som finns tillgängliga på github och i kurskatalogen, vilket gör det betydligt lättare för nybörjare att komma in i språket samt även förklarar lite mer avancerade ämnen i språket. 
+Jag hade nog själv kanske velat se mindre bråk med pylint än vad jag stött på. Jag kan inte riktigt komma på något konkret vid detta tillfälle, men jag vet att jag haft mina frustrerande möten med den ibland. 
+Jag vill även passa på att nämna att det är RIKTIGT uppskattat att ni konsekvent tvingat oss användare att använda en terminal för att genomföra kommandon. Detta är något som många studenter kanske varit lite obekväma med först, men något som garanterat kommer hjälpa dem senare. Inklusive mig.
+<br>
+Lärarlaget har varit riktigt bemötande, absolut inga problem där. Jag gillar även att vi använder gitter, vilket ger studenter som mig själv möjlighet att hjälpa personer som har lite mindre erfarenhet. Jag har lärt mig att jag lär mig mycket av att lära andra med de problem de kanske sitter på.
+<br>
+Jag har redan rekommenderat en föredetta kurskamrat att ta kurspaketet alt. söka programmet till hösten då hon har valt att sluta vid Chalmers/GU av precis samma anledningar som mig själv.
+Anledningen till att jag rekommenderade kursen var huvudsakligen för att lärarlaget varit så oerhört bemötande och hjälpsamma.
+<br>
+Ni och kursen får 10 av 10 toasters. Bra jobbat!
+</ul>
+				    		   </div>
+			    		</div>
+    				</div>
+    			</div>
 	</div>
 	</div>
 	</body>
